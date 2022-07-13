@@ -60,20 +60,28 @@ cd cd0157-Server-Deployment-and-Containerization/
 1. These are the files relevant for the current project:
 ```bash
 .
-├── Dockerfile 
-├── README.md
-├── aws-auth-patch.yml #ToDo
-├── buildspec.yml      #ToDo
-├── ci-cd-codepipeline.cfn.yml #ToDo
-├── iam-role-policy.json  #ToDo
-├── main.py
-├── requirements.txt
+├── Dockerfile
+├── aws-auth-patch.yml           # TODO - A sample EKS Cluster configMap file. 
+├── ci-cd-codepipeline.cfn.yml   # TODO - YAML template to create CodePipeline pipeline and CodeBuild resources
+├── buildspec.yml
 ├── simple_jwt_api.yml
-├── test_main.py  #ToDo
-└── trust.json     #ToDo 
+├── trust.json              # TODO - Used for creating an IAM role for Codebuild
+├── iam-role-policy.json    
+├── main.py                 
+├── requirements.txt        
+└── test_main.py            # TODO - Unit Test file
 ```
 
-     
+Most of the files needed in this project are already available to you. You will have to make changes in the following files aligned with the upcoming instructions:
+
+1. *trust.json*: This file and *iam-role-policy.json* file will be used for creating an IAM role for Codebuild to assume while building your code and deploying to the EKS cluster.
+
+2. *aws-auth-patch.yml*: You will create a file similar to this one after creating en EKS cluster. We have given you a sample file so that the YAML indentations will not trouble you.
+
+3. *ci-cd-codepipeline.cfn.yml*: This is the Cloudformation template that we will use to create Codebuild, Codepipeline, and related resources like IAM roles and S3 bucket. This file is almost complete, except for you to write a few parameter values specific to you. Once the Codebuild resource is created, it will run the commands mentioned in the *buildspec.yml*.
+
+4. *test_main.py*: You will write unit tests in this file.
+
 ## Project Steps
 
 Completing the project involves several steps:
